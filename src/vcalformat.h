@@ -45,11 +45,20 @@
 #include "todo.h"
 #include "journal.h"
 
+extern "C" {
+#include <libical/vcc.h>
+#include <libical/vobject.h>
+}
+
 struct VObject;
 
 class QDate;
 
 #define _VCAL_VERSION "1.0"
+/* extensions for iMIP / iTIP */
+#define ICOrganizerProp       "X-ORGANIZER"
+#define ICMethodProp          "X-METHOD"
+#define ICRequestStatusProp   "X-REQUEST-STATUS"
 
 namespace KCalCore
 {

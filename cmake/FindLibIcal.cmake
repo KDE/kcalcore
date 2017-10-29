@@ -47,7 +47,14 @@ find_library(LibIcalss_LIBRARY
     ${libical_root}/lib ${_program_FILES_DIR}/libical/lib
 )
 
-set(LibIcal_LIBRARIES ${LibIcal_LIBRARY} ${LibIcalss_LIBRARY})
+find_library(LibIcalvcal_LIBRARY
+  NAMES icalvcal libicalvcal
+  HINTS
+    ${libical_root}/lib64 ${_program_FILES_DIR}/libical/lib64
+    ${libical_root}/lib ${_program_FILES_DIR}/libical/lib
+)
+
+set(LibIcal_LIBRARIES ${LibIcal_LIBRARY} ${LibIcalss_LIBRARY} ${LibIcalvcal_LIBRARY})
 
 if(LibIcal_INCLUDE_DIRS AND LibIcal_LIBRARIES)
   set(FIND_LibIcal_VERSION_SOURCE

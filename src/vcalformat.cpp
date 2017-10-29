@@ -40,8 +40,6 @@
 #include "exceptions.h"
 #include "todo.h"
 #include "utils.h"
-#include "versit/vcc.h"
-#include "versit/vobject.h"
 #include "utils.h"
 
 #include "kcalcore_debug.h"

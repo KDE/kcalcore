@@ -1,18 +1,7 @@
 
 ########### next target ###############
 
-bison_target(VersitParser
-  ${CMAKE_CURRENT_SOURCE_DIR}/versit/vcc.y
-  ${CMAKE_CURRENT_BINARY_DIR}/vcc-parser.c
-)
-
-set(libversit_SRCS
-  ${CMAKE_CURRENT_SOURCE_DIR}/versit/vobject.c
-  ${BISON_VersitParser_OUTPUTS}
-)
-
 set(kcalcore_LIB_SRCS
-  ${libversit_SRCS}
   alarm.cpp
   attachment.cpp
   attendee.cpp
