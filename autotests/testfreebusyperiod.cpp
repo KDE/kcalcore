@@ -97,7 +97,11 @@ void FreeBusyPeriodTest::testDataStreamOut()
 
 void FreeBusyPeriodTest::testDataStreamIn()
 {
+#if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
     const QDateTime p1DateTime(QDate(2006, 8, 30));
+#else
+    const QDateTime p1DateTime(QDate(2006, 8, 30).startOfDay());                              
+#endif
     const Duration duration(24 * 60 * 60);
     FreeBusyPeriod p1(p1DateTime, duration);
     p1.setSummary(QStringLiteral("I can haz summary?"));

@@ -101,7 +101,11 @@ int main(int argc, char **argv)
                 ++i;
                 dt = incidence->recurrence()->getNextDateTime(dt);
                 if (dt.isValid()) {
+#if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
                     (*outstream) << dumpTime(dt, viewZone) << endl;
+#else
+                    (*outstream) << dumpTime(dt, viewZone) << Qt::endl;
+#endif
                 }
             }
         } else {

@@ -213,7 +213,7 @@ void CustomProperties::setCustomProperties(const QMap<QByteArray, QString> &prop
 
 QMap<QByteArray, QString> CustomProperties::customProperties() const
 {
-    QMap<QByteArray, QString> result;
+    QMultiMap<QByteArray, QString> result;
     result.unite(d->mProperties);
     result.unite(d->mVolatileProperties);
 

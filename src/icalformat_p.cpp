@@ -1806,7 +1806,11 @@ void ICalFormatImpl::readIncidence(icalcomponent *parent, const Incidence::Ptr &
             // We can't change that -- in order to retain backwards compatibility.
             text = icalproperty_get_categories(p);
             const QString val = QString::fromUtf8(text);
+#if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
             const QStringList lstVal = val.split(QLatin1Char(','), QString::SkipEmptyParts);
+#else
+            const QStringList lstVal = val.split(QLatin1Char(','));
+#endif
             for (const QString &cat : lstVal) {
                 // ensure no duplicates
                 if (!categories.contains(cat)) {
@@ -1978,8 +1982,11 @@ void ICalFormatImpl::Private::readIncidenceBase(icalcomponent *parent,
     if (!uidProcessed) {
         qCWarning(KCALCORE_LOG) << "The incidence didn't have any UID! Report a bug "
                                 << "to the application that generated this file."
+#if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
                                 << endl;
-
+#else
+                                << Qt::endl;
+#endif
         // Our in-memory incidence has a random uid generated in Event's ctor.
         // Make it empty so it matches what's in the file:
         incidenceBase->setUid(QString());
